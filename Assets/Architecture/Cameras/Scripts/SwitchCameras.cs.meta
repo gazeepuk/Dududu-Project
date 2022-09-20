@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 87c259b68a43fef48b70eaef69fbce5c
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - vcam1: {fileID: 5200793703472497150, guid: 460a2e0f27e716e43abd4a6208d1fbe0, type: 3}
+  - vcam2: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
