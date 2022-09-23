@@ -1,8 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class MyDictionary : MonoBehaviour
+public class MyDictionary
 {
     public static Dictionary<string, int[]> ascii = new Dictionary<string, int[]>()
         {

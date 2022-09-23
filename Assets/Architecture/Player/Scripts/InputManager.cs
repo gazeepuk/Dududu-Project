@@ -6,6 +6,9 @@ public class InputManager : MonoBehaviour
 {
     private PlayerController playerController;
     private Controller controller;
+
+    [SerializeField]
+    private ExitWindow exitWindow;
     public Vector2 InputMovement { get; private set; }
     public float HorizontalInput { get; private set; }
     public float VerticalInput { get; private set; }
@@ -21,6 +24,7 @@ public class InputManager : MonoBehaviour
         playerController?.Enable();
         playerController.Player.Movement.performed += ctx => InputMovement = ctx.ReadValue<Vector2>();
         playerController.Player.Jump.started += _ => controller.Jump();
+        playerController.Player.Exit.started += _ => exitWindow.SetExitWindowOn();
 
     }
 
@@ -29,6 +33,7 @@ public class InputManager : MonoBehaviour
         playerController?.Disable();
         playerController.Player.Movement.performed -= ctx => InputMovement = ctx.ReadValue<Vector2>();
         playerController.Player.Jump.started -= _ => controller.Jump();
+        playerController.Player.Exit.started -= _ => exitWindow.SetExitWindowOn();
     }
 
     public void HandleAllInputs()
