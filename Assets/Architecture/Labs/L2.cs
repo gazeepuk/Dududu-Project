@@ -1,30 +1,54 @@
 using System;
 public class L2
 {
-    class L2_1Task
+    public string OutputText { get; private set; }
+    public string InputText { get; private set; }
+    private int m;
+    private int n;
+    private char[,] matrix;
+    public L2(string text, int m)
     {
-        public string Chiper { get; private set; }
-        public L2_1Task(string text, int m)
+        InputText = text;
+        this.m = m;
+        n = (int)Math.Ceiling((double)text.Length / m);
+        matrix = new char[m, n];
+    }
+
+    public void EncryptText()
+    {
+        EncryptMatrix();
+        MakeOutputText();
+    }
+    private void EncryptMatrix()
+    {
+        for (int i = 0, c = 0; i < n; i++)
         {
-            Chiper = "";
-            int n = (int)Math.Ceiling((double)text.Length / 3);
-
-            n = n % 2 == 0 ? n : n+1;
-
-            char[,] matrix = new char[m, n];
-
-            for (int i = 0,c = 0; i < m; i++,c++)
+            for (int j = 0; j < m; j++)
             {
-                for (int j = 0; j < n; j++,c++)
+                if (c < InputText.Length)
                 {
-                    matrix[j, i] = c < text.Length ? text[c] : ' ';
+                    matrix[j, i] = InputText[c];
+                    c++;
                 }
-            }
-
-            foreach(char c in matrix)
-            {
-                Chiper += c;
+                else
+                {
+                    matrix[j, i] = ' ';
+                }
             }
         }
     }
+
+
+    private void MakeOutputText()
+    {
+        OutputText = "";
+        if (matrix != null)
+            foreach (var item in matrix)
+            {
+                OutputText += item;
+            }
+        else
+            OutputText = "Input text is null";
+    }
+
 }
