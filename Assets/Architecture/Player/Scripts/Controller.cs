@@ -1,15 +1,17 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using Cinemachine;
+
 
 public class Controller : MonoBehaviour
 {
+    private CharacterController characterController;
+
     public AnimationCurve speedCurve;
     private float time = 0f;
-    private CharacterController characterController;
+
+
+    [SerializeField]
+    private float speedMultiplpier = 1f;
+
     public float MovementSpeed { get; private set; }
     [SerializeField]
     private float gravity = -9.81f;
@@ -20,11 +22,11 @@ public class Controller : MonoBehaviour
     private float chackRadius = 0.1f;
     [SerializeField]
     private LayerMask groundLayer;
+    public float Velocity { get; private set; }
 
     [SerializeField]
     private float jumpHeight = 3f;
 
-    public float Velocity { get; private set; }
 
     private InputManager inputManager;
     private Transform cameraObject;
@@ -32,6 +34,7 @@ public class Controller : MonoBehaviour
     private Vector3 moveDirection;
 
     private float turnSmoothVelocity;
+
     private void Awake()
     {
         Velocity = 0f;
@@ -55,22 +58,21 @@ public class Controller : MonoBehaviour
     public bool IsGrounded() => Physics.CheckSphere(groundCheker.position, chackRadius, groundLayer);
     private void Move()
     {
-        MovementSpeed = speedCurve.Evaluate(time);
+        MovementSpeed = speedCurve.Evaluate(time) * Time.fixedDeltaTime * speedMultiplpier;
+
         if (moveDirection == Vector3.zero)
-        {
             time = 0f;
-        }
         else
             time += Time.fixedDeltaTime;
 
-        moveDirection = inputManager.HorizontalInput*cameraObject.right + inputManager.VerticalInput*cameraObject.forward;
-        moveDirection.Normalize();
+        moveDirection = inputManager.HorizontalInput * cameraObject.right + inputManager.VerticalInput * cameraObject.forward;
         moveDirection = new Vector3(moveDirection.x, 0, moveDirection.z);
-        if(moveDirection.magnitude >= 0.1f)
-        {
-            HandleRotation();
-            characterController.Move(moveDirection * Time.fixedDeltaTime * MovementSpeed);
+        moveDirection.Normalize();
 
+        if (moveDirection.magnitude >= 0.1f)
+        {
+            characterController.Move(moveDirection * Time.fixedDeltaTime * MovementSpeed);
+            HandleRotation();
         }
 
     }
@@ -78,14 +80,14 @@ public class Controller : MonoBehaviour
     private void HandleRotation()
     {
         float targrtAngle = Mathf.Atan2(moveDirection.x, moveDirection.z) * Mathf.Rad2Deg;
-        float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targrtAngle, ref turnSmoothVelocity ,0.1f);
+        float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targrtAngle, ref turnSmoothVelocity, 0.1f);
         transform.rotation = Quaternion.Euler(0, angle, 0);
 
     }
     public void Jump()
     {
-        if(IsGrounded())
-        Velocity = Mathf.Sqrt(jumpHeight * -2 * gravity);
+        if (IsGrounded())
+            Velocity = Mathf.Sqrt(jumpHeight * -2 * gravity);
         characterController.Move(Vector3.up * Velocity * Time.fixedDeltaTime);
     }
 
@@ -96,7 +98,7 @@ public class Controller : MonoBehaviour
             Velocity = 0;
             return;
         }
-        Velocity += gravity*Time.fixedDeltaTime;
+        Velocity += gravity * Time.fixedDeltaTime;
         characterController.Move(Vector3.up * Velocity * Time.fixedDeltaTime);
     }
 }
