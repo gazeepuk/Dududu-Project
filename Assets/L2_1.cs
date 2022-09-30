@@ -6,7 +6,14 @@ public class L2_1 : MonoBehaviour
     TMP_InputField inputText;
     [SerializeField]
     TMP_InputField mField;
-    public void Encrypt()
+
+    public bool ToDecrypt { get; set; }
+
+    private void Awake()
+    {
+        ToDecrypt = false;
+    }
+    public void GenerateText()
     {
         if(inputText.text == null || !int.TryParse(mField.text, out var m))
         {
@@ -15,7 +22,10 @@ public class L2_1 : MonoBehaviour
         }
 
         var l2 = new L2(inputText.text, m);
-        l2.EncryptText();
+        if(ToDecrypt)
+            l2.DecryptText();
+        else
+            l2.EncryptText();
         inputText.text = l2.OutputText;
     }
 }

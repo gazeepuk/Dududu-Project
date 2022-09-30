@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b4e25275454d24949a45ffed7e64801f
+guid: 7f0b0865e67e5c84b85381564cc54282
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,139 +117,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Canvas
+      name: menu_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 31
-        width: 53
-        height: 31
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6525ae7c89c2ec94bb8c26bb2b1757be
-      internalID: 1798959875
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Text_Input
-      rect:
-        serializedVersion: 2
-        x: 55
-        y: 56
-        width: 24
-        height: 5
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3cbc84314c412c34dbada6c0faaeb299
-      internalID: -1541757283
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Text_Output
-      rect:
-        serializedVersion: 2
-        x: 55
-        y: 50
-        width: 24
-        height: 5
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 823fed995bffb7144aede188ffa1fbc8
-      internalID: 1812508902
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Button
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 43
-        width: 15
-        height: 6
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3c996699c76d5084d8959096b77d8888
-      internalID: -1235885743
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BG
-      rect:
-        serializedVersion: 2
-        x: 3
-        y: 1
-        width: 49
-        height: 29
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8693a929903a2ae45b2d46bd7375301e
-      internalID: -616254929
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Toggle_BG
-      rect:
-        serializedVersion: 2
-        x: 56
-        y: 31
-        width: 9
-        height: 9
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6622a046ac5a65e4e8636002a97c175c
-      internalID: 217613256
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: toggle_mark
-      rect:
-        serializedVersion: 2
-        x: 68
-        y: 33
-        width: 5
-        height: 5
+        x: 0
+        y: 0
+        width: 80
+        height: 45
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -257,8 +131,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e94993debc1855a4e9e7d3d6371dbc5c
-      internalID: 1848653560
+      spriteID: 37b65bb5375c0ad43b9e721fb9210fe9
+      internalID: -923219168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: menu_1
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 36
+        width: 21
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d25e75542792f6544aa1a7adc14f4e6a
+      internalID: -1321875709
       vertices: []
       indices: 
       edges: []
@@ -266,7 +161,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 803d7804d01474444b01e3d487215092
+    spriteID: b1bd20979651bbe419cfbca3f89b81c1
     internalID: 0
     vertices: []
     indices: 
@@ -274,13 +169,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Toggle_BG: 217613256
-      toggle_mark: 1848653560
-      BG: -1025855647
-      Text_Output: -222337216
-      Text_Input: 1516647104
-      Button: -1847214254
-      Canvas: 230817279
+      menu_1: -1321875709
+      menu_0: -923219168
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

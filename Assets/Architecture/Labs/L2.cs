@@ -3,6 +3,7 @@ public class L2
 {
     public string OutputText { get; private set; }
     public string InputText { get; private set; }
+
     private int m;
     private int n;
     private char[,] matrix;
@@ -17,6 +18,11 @@ public class L2
     public void EncryptText()
     {
         EncryptMatrix();
+        MakeOutputText();
+    }
+    public void DecryptText()
+    {
+        DecryptMatrix();
         MakeOutputText();
     }
     private void EncryptMatrix()
@@ -38,6 +44,24 @@ public class L2
         }
     }
 
+    private void DecryptMatrix()
+    {
+        for (int i = 0, c = 0; i < n; i++)
+        {
+            for (int j = 0; j < m; j++)
+            {
+                if (c < InputText.Length)
+                {
+                    matrix[i, j] = InputText[c];
+                    c++;
+                }
+                else
+                {
+                    matrix[i, j] = ' ';
+                }
+            }
+        }
+    }
 
     private void MakeOutputText()
     {

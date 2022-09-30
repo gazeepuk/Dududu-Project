@@ -34,6 +34,6 @@ public class ExitWindow : MonoBehaviour
 
     public void CloseApplication()
     {
-        Application.Quit();
+        SceneManagement.ColseApplication();
     }
 }
