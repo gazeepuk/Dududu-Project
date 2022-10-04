@@ -3,22 +3,25 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-public class ToggleL2_1 : MonoBehaviour
+public class ToggleCustom : MonoBehaviour
 {
+    public event System.Action OnToggleSetEvent;
+
     [SerializeField]
     private Image toggleMark;
-    private L2_1 generateButton;
+
+    public bool IsToggleAvtive { get; private set; }
+
     void Awake()
     {
-        Debug.Log(toggleMark.name);
-        generateButton = transform.parent.GetComponentInChildren<L2_1>();
-        generateButton.ToDecrypt = toggleMark.gameObject.activeInHierarchy;
+        IsToggleAvtive = toggleMark.gameObject.activeSelf;
     }
 
     public void SetToggleMark()
     {
+        IsToggleAvtive = !toggleMark.gameObject.activeSelf;
         toggleMark.gameObject.SetActive(!toggleMark.gameObject.activeSelf);
-        generateButton.ToDecrypt = toggleMark.gameObject.activeSelf;
+        OnToggleSetEvent?.Invoke();
     }
 
 }

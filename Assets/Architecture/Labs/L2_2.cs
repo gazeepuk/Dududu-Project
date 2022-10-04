@@ -1,6 +1,9 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-public class L2_1 : MonoBehaviour
+
+public class L2_2 : MonoBehaviour
 {
     [SerializeField]
     TMP_InputField inputText;
@@ -32,14 +35,15 @@ public class L2_1 : MonoBehaviour
     {
         ToDecrypt = false;
     }
+
     public void GenerateText()
     {
-        if(inputText.text == null || !int.TryParse(mField.text, out var m))
+        if (inputText.text == null || !int.TryParse(mField.text, out var m))
         {
             mField.text = inputText.text = "Incorrect value";
             return;
         }
-        var l2 = new L2_1Task(inputText.text, m, ToDecrypt);
+        var l2 = new L2_2Task(inputText.text, m, ToDecrypt);
         l2.MakeOutputText();
         inputText.text = l2.OutputText;
 
