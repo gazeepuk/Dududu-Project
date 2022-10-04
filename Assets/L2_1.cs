@@ -21,8 +21,9 @@ public class L2_1 : MonoBehaviour
             return;
         }
 
-        var l2 = new L2(inputText.text, m);
-        l2.MakeOutputText(ToDecrypt);
+        var l2 = new L2(inputText.text, m, ToDecrypt);
+        l2.MakeOutputText();
+        Debug.Log(l2.OutputText);
         inputText.text = l2.OutputText;
     }
 }
