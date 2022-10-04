@@ -22,10 +22,7 @@ public class L2_1 : MonoBehaviour
         }
 
         var l2 = new L2(inputText.text, m);
-        if(ToDecrypt)
-            l2.DecryptText();
-        else
-            l2.EncryptText();
+        l2.MakeOutputText(ToDecrypt);
         inputText.text = l2.OutputText;
     }
 }

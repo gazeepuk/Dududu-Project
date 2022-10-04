@@ -5,11 +5,11 @@ using UnityEngine;
 using UnityEngine.UI;
 public class ToggleL2_1 : MonoBehaviour
 {
+    [SerializeField]
     private Image toggleMark;
     private L2_1 generateButton;
     void Awake()
     {
-        toggleMark = GetComponentInChildren<Image>();
         Debug.Log(toggleMark.name);
         generateButton = transform.parent.GetComponentInChildren<L2_1>();
         generateButton.ToDecrypt = toggleMark.gameObject.activeInHierarchy;

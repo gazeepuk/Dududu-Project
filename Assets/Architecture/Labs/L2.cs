@@ -13,19 +13,9 @@ public class L2
         this.m = m;
         n = (int)Math.Ceiling((double)text.Length / m);
         matrix = new char[m, n];
+        MakeMatrix();
     }
-
-    public void EncryptText()
-    {
-        EncryptMatrix();
-        MakeOutputText();
-    }
-    public void DecryptText()
-    {
-        DecryptMatrix();
-        MakeOutputText();
-    }
-    private void EncryptMatrix()
+    private void MakeMatrix()
     {
         for (int i = 0, c = 0; i < n; i++)
         {
@@ -44,32 +34,26 @@ public class L2
         }
     }
 
-    private void DecryptMatrix()
-    {
-        for (int i = 0, c = 0; i < n; i++)
-        {
-            for (int j = 0; j < m; j++)
-            {
-                if (c < InputText.Length)
-                {
-                    matrix[i, j] = InputText[c];
-                    c++;
-                }
-                else
-                {
-                    matrix[i, j] = ' ';
-                }
-            }
-        }
-    }
-
-    private void MakeOutputText()
+    public void MakeOutputText(bool toDecrypt)
     {
         OutputText = "";
         if (matrix != null)
-            foreach (var item in matrix)
+            if (!toDecrypt)
             {
-                OutputText += item;
+                foreach (var item in matrix)
+                {
+                    OutputText += item;
+                }
+            }
+            else
+            {
+                for (int i = 0; i < n; i++)
+                {
+                    for (int j = 0; j < m; j++)
+                    {
+                        OutputText += matrix[j, i];
+                    }
+                }
             }
         else
             OutputText = "Input text is null";
