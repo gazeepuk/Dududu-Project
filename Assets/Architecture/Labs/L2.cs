@@ -15,6 +15,7 @@ public class L2
         n = (int)Math.Ceiling((double)text.Length / m);
         matrix = new char[m, n];
         this.toDecrypt = toDecrypt;
+        MakeMatrix();
     }
 
     private void MakeMatrix()
@@ -51,12 +52,12 @@ public class L2
             {
                 if (c < InputText.Length)
                 {
-                    matrix[j, i] = InputText[c];
+                    matrix[i, j] = InputText[c];
                     c++;
                 }
                 else
                 {
-                    matrix[j, i] = ' ';
+                    matrix[i, j] = ' ';
                 }
             }
         }
@@ -67,10 +68,8 @@ public class L2
         OutputText = "";
         if (matrix != null)
         {
-            UnityEngine.Debug.Log("MAKE");
             if (!toDecrypt)
             {
-                UnityEngine.Debug.Log("Encrypt");
                 foreach (var item in matrix)
                 {
                     UnityEngine.Debug.Log(item);
@@ -80,11 +79,11 @@ public class L2
             }
             else
             {
-                for (int i = 0; i < m; i++)
+                for (int i = 0; i < n; i++) 
                 {
-                    for (int j = 0; j < n; j++)
+                    for (int j = 0; j < m; j++)
                     {
-                        OutputText += matrix[i, j];
+                        OutputText += matrix[j, i];
                     }
                 }
             }
