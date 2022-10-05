@@ -136,6 +136,7 @@ public class L2_2Task
             EncryptArray();
         else
             DecryptArray();
+        MakeOutputText();
     }
 
     private void EncryptArray()
@@ -167,12 +168,12 @@ public class L2_2Task
         }
     }
 
-    public void MakeOutputText()
+    private void MakeOutputText()
     {
         OutputText = "";
         if(toEncrypt)
         {
-            foreach (var item in arrNum)
+            foreach (var item in arrWord)
             {
                 OutputText+=item;
             }

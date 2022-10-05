@@ -38,13 +38,12 @@ public class L2_2 : MonoBehaviour
 
     public void GenerateText()
     {
-        if (inputText.text == null || !int.TryParse(mField.text, out var m))
+        if (inputText.text == null || !int.TryParse(mField.text, out var m) || inputText.text.Length > m*m)
         {
             mField.text = inputText.text = "Incorrect value";
             return;
         }
-        var l2 = new L2_2Task(inputText.text, m, ToDecrypt);
-        l2.MakeOutputText();
+        var l2 = new L2_2Task(inputText.text, m, !ToDecrypt);
         inputText.text = l2.OutputText;
 
     }
