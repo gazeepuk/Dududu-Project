@@ -7,18 +7,19 @@ public class MyDictionary
             {"engLowerCase", new int[]{97,122}},
             {"engUpperCase", new int[]{65,90}},
             {"numbers", new int[]{48,57}},
-            {"symbols", new int[]{33,42}}
+            {"symbols", new int[]{33,42}},
+            {"rusLowerCase", new int[]{'à','ÿ'} },
+            {"rusUpperCase", new int[]{'À','ß'} }
     };
 
     public static char GetSymbolWithDelta(string key, int charNum, int delta)
     {
         int newCharNum = charNum + delta;
-        if(newCharNum > ascii[key][1])
+        while (newCharNum > ascii[key][1])
         {
             newCharNum = ascii[key][0] + newCharNum - ascii[key][1] - 1;
-            return (char)newCharNum;
         }
-        else if(newCharNum < ascii[key][0])
+        while (newCharNum < ascii[key][0])
         {
             newCharNum = ascii[key][1] - (ascii[key][0] - newCharNum) + 1;
         }
