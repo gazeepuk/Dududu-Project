@@ -20,7 +20,7 @@ public class MyDictionary
         }
         else if(newCharNum < ascii[key][0])
         {
-            newCharNum = ascii[key][0] - ascii[key][0] - newCharNum + 1;
+            newCharNum = ascii[key][1] - (ascii[key][0] - newCharNum) + 1;
         }
         return (char)newCharNum;
     }

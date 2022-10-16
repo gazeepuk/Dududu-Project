@@ -1,6 +1,9 @@
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Linq.Expressions;
+using static UnityEditor.Progress;
 
 public class L3_1Task
 {
@@ -15,7 +18,7 @@ public class L3_1Task
     public L3_1Task(string inputText, int m, bool toDecrypt)
     {
         InputText = inputText;
-        arrWord = new char[inputText.Length];
+        arrWord = inputText.ToCharArray();
         this.m = m;
         this.toDecrypt = toDecrypt;
         GenerateArrWord();
@@ -34,24 +37,69 @@ public class L3_1Task
     private void GenerateArrWord()
     {
         var newArrWord = new char[arrWord.Length];
+        var c = 0;
         foreach (var item in arrWord)
         {
             foreach (var key in MyDictionary.ascii.Keys)
             {
-                UnityEngine.Debug.Log("KEYS");
-                if(item >= MyDictionary.ascii[key][0]  && item <= MyDictionary.ascii[key][0])
+                if((int)item >= MyDictionary.ascii[key][0]  && item <= MyDictionary.ascii[key][1])
                 {
-                    if(toDecrypt)
-                        newArrWord.Append(MyDictionary.GetSymbolWithDelta(key, item, -m));
+                    if (toDecrypt)
+                    {
+                        var newChar = MyDictionary.GetSymbolWithDelta(key, (int)item, -m);
+                        newArrWord[c] = newChar;
+                    }
                     else
-                        newArrWord.Append(MyDictionary.GetSymbolWithDelta(key, item, m));
+                    {
+                        var newChar = MyDictionary.GetSymbolWithDelta(key, (int)item, m);
+                        newArrWord[c] = newChar;
+                    }
                 }
             }
+            c++;
         }
-        Array.Copy(newArrWord, arrWord, m);
-        foreach (var item in newArrWord)
+        Array.Copy(newArrWord, 0, arrWord, 0, arrWord.Length);
+    }
+}
+public class L3_2Task
+{
+    public string InputText { get; private set; }
+    public string OutputText { get; private set; }
+
+    private bool toDecrypt;
+
+    private char[] arrWord;
+
+    public L3_2Task(string inputText, bool toDecrypt)
+    {
+        InputText = inputText;
+        this.toDecrypt = toDecrypt;
+        arrWord = new char[inputText.Length];
+    }
+
+    private void GenerateNewArrWord()
+    {
+        var newArrWord = new char[arrWord.Length];
+        for (int posText = 1; posText <= arrWord.Length; posText++)
         {
-            UnityEngine.Debug.Log(item);
-        }
+            int m = 0;
+            foreach (var key in MyDictionary.ascii.Keys)
+            {
+                if ((int)arrWord[posText] >= MyDictionary.ascii[key][0] && arrWord[posText] <= MyDictionary.ascii[key][1])
+                {
+                    if (toDecrypt)
+                    {
+                        var newChar = MyDictionary.GetSymbolWithDelta(key, (int)arrWord[posText], 0);
+                        m = (int)newChar;
+                    }
+                    else
+                    {
+                        var newChar = MyDictionary.GetSymbolWithDelta(key, (int)arrWord[posText], 0);
+                        m = (int)newChar;
+                    }
+                }
+            }
+            var k = 3 * posText * posText + 2 * posText + 1;
+        }   
     }
 }
